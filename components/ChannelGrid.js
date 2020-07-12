@@ -1,10 +1,19 @@
 import React from 'react';
-import Link from 'next/link';
-
+import {Link} from '../routes';
+import slug from '../helper/slug';
 export default ({chanels})=>(
   <div className="channels">
     { chanels.map((channel) => (
-      <Link key ={channel.id} href={`/chanel?id=${channel.id}`} prefetch>
+      <Link 
+        key ={channel.id} 
+        route="channel"
+        params={{
+          slug:slug(channel.title),
+          id:channel.id
+        }}
+       
+        prefetch
+      >
         <a className="channel" key={ channel.id }>
           <img src={ channel.urls.logo_image.original } alt=""/>
           <h2>{ channel.title }</h2>

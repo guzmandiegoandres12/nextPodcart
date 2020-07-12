@@ -2,7 +2,7 @@ import React from 'react';
 import  "isomorphic-fetch";
 import Layout from "../components/Layout";
 import ChanelGrid from "../components/ChannelGrid";
-import Error from 'next/error';
+import Error from './_error';
 export default  class extends React.Component{
 
   static async getInitialProps({res}){

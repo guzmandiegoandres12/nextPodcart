@@ -4,10 +4,9 @@
   "description": "this proyect inplements next.js by tre constuct a podcast's web",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
-    "build": "next build",
-    "srtart": "next start"
+    "dev": "node server.js",
+    "start": "NODE_ENV=production node server.js",
+    "build": "next build"
   },
   "keywords": [
     "platzi",
@@ -19,7 +18,9 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "next": "^9.4.4",
+    "next-routes": "^1.4.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "slugify": "^1.4.4"
   }
 }
