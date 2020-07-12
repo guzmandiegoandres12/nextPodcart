@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Layout from "../components/Layout";
+import ChanelGrid from "../components/ChannelGrid";
 
 export default class extends  React.Component{
   static async getInitialProps({query}){
@@ -17,42 +19,23 @@ export default class extends  React.Component{
    
     const clip = this.props.data
     return(
-      <div>
-      <header>Podcasts</header>
-
-      <div className='modal'>
-        <div className='clip'>
-          <nav>
-            <Link href={`/chanel?id=${clip.channel.id}`}>
-              <a className='close'>&lt; Volver</a>
-            </Link>
-          </nav>
-
-          <picture>
-            <div style={{ backgroundImage: `url(${clip.urls.image || clip.channel.urls.logo_image.original})` }} />
-          </picture>
-
-          <div className='player'>
-            <h3>{ clip.title }</h3>
-            <h6>{ clip.channel.title }</h6>
-            <audio controls autoPlay={true}>
-              <source src={clip.urls.high_mp3} type='audio/mpeg' />
-            </audio>
+      <Layout title="Postcast">
+      {/**<ChanelGrid chanels={chanels}/> */} 
+        <div className='modal'>
+          <div className='clip'>
+            <picture>
+              <div style={{ backgroundImage: `url(${clip.urls.image || clip.channel.urls.logo_image.original})` }} />
+            </picture>
+            <div className='player'>
+              <h3>{ clip.title }</h3>
+              <h6>{ clip.channel.title }</h6>
+              <audio controls autoPlay={true}>
+                <source src={clip.urls.high_mp3} type='audio/mpeg' />
+              </audio>
+            </div>
           </div>
         </div>
-      </div>
-
-      <style jsx>{`
-        nav {
-          background: none;
-        }
-        nav a {
-          display: inline-block;
-          padding: 15px;
-          color: white;
-          cursor: pointer;
-          text-decoration: none;
-        }
+        <style jsx>{`
         .clip {
           display: flex;
           height: 100%;
@@ -94,7 +77,7 @@ export default class extends  React.Component{
         }
 
         .modal {
-          position: fixed;
+          position: absolute;
           top: 0;
           left: 0;
           right: 0;
@@ -102,16 +85,8 @@ export default class extends  React.Component{
           z-index: 99999;
         }
       `}</style>
-
-      <style jsx global>{`
-        body {
-          margin: 0;
-          font-family: system-ui;
-          background: white;
-        }
-      `}</style>
-    </div>
-
+      </Layout>
+   
     )
   }
 }
